@@ -11,7 +11,15 @@ It is simple, super fast, thread safe and gives the possibility to choose the ad
 
 The memory adapter minimizes GC overhead to near zero and supports some options of caching algorithms (LRU, MRU, LFU, MFU). This way, it is able to store plenty of gigabytes of responses, keeping great performance and being free of leaks.
 
-**Note:** Some tests are currently disabled as they weren't updated when the library was updated for use with echo.
+**Note:** Some tests are currently disabled as they weren't updated when the library was updated for use with echo. I plan to fix this soon.
+
+## Original Credit
+
+Project has been detached from the original repository as it's not maintained anymore and github defaults PRs to the original repository.
+
+* [echo-http-cache](https://github.com/SporkHubr/echo-http-cache)
+* [http-cache](https://github.com/victorspringer/http-cache)
+
 
 ## Getting Started
 
@@ -136,13 +144,6 @@ echo-http-cache memory adapter takes way less GC pause time, that means smaller 
 - [echo-http-cache](https://pkg.go.dev/github.com/rocketblend/echo-http-cache)
 - [Memory adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/memory)
 - [Redis adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/redis)
-
-## Original
-
-Project has been detached from the original repository due to the fact that it was not maintained anymore and github defaults PRs to the original repository.
-
-* [echo-http-cache](https://github.com/SporkHubr/echo-http-cache)
-* [http-cache](https://github.com/victorspringer/http-cache)
 
 ## License
 echo-http-cache is released under the [MIT License](https://github.com/rocketblend/echo-http-cache/blob/master/LICENSE).
