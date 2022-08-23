@@ -137,8 +137,9 @@ echo-http-cache memory adapter takes way less GC pause time, that means smaller 
 - [Memory adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/memory)
 - [Redis adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/redis)
 
-
 ## Original
+
+Project has been detached from the original repository due to the fact that it was not maintained anymore and github defaults PRs to the original repository.
 
 * [echo-http-cache](https://github.com/SporkHubr/echo-http-cache)
 * [http-cache](https://github.com/victorspringer/http-cache)
