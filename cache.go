@@ -52,6 +52,9 @@ type Response struct {
 	// Header is the cached response header.
 	Header http.Header
 
+	// StatusCode is the cached response status code.
+	StatusCode int
+
 	// Expiration is the cached response expiration date.
 	Expiration time.Time
 
@@ -66,11 +69,12 @@ type Response struct {
 
 // Client data structure for HTTP cache middleware.
 type Client struct {
-	adapter         Adapter
-	ttl             time.Duration
-	refreshKey      string
-	methods         []string
-	restrictedPaths []string
+	adapter          Adapter
+	ttl              time.Duration
+	refreshKey       string
+	methods          []string
+	restrictedPaths  []string
+	statusCodeFilter func(int) bool
 }
 
 type bodyDumpResponseWriter struct {
@@ -152,10 +156,10 @@ func (client *Client) Middleware() echo.MiddlewareFunc {
 							response.Frequency++
 							client.adapter.Set(key, response.Bytes(), response.Expiration)
 
-							//w.WriteHeader(http.StatusNotModified)
 							for k, v := range response.Header {
 								c.Response().Header().Set(k, strings.Join(v, ","))
 							}
+							c.Response().WriteHeader(response.StatusCode)
 							c.Response().WriteHeader(http.StatusOK)
 							c.Response().Write(response.Value)
 							return nil
@@ -175,7 +179,7 @@ func (client *Client) Middleware() echo.MiddlewareFunc {
 
 				statusCode := writer.statusCode
 				value := resBody.Bytes()
-				if statusCode < 400 {
+				if client.statusCodeFilter(statusCode) {
 					now := time.Now()
 
 					response := Response{
@@ -288,8 +292,20 @@ func NewClient(opts ...ClientOption) (*Client, error) {
 	if c.methods == nil {
 		c.methods = []string{http.MethodGet}
 	}
+	if c.statusCodeFilter == nil {
+		c.statusCodeFilter = func(code int) bool { return code < 400 }
+	}
 
 	return c, nil
+}
+
+// ClientWithStatusCodeFilter sets the acceptable status codes to be cached.
+// Optional setting. If not set, default filter allows caching of every response with status code below 400.
+func ClientWithStatusCodeFilter(filter func(int) bool) ClientOption {
+	return func(c *Client) error {
+		c.statusCodeFilter = filter
+		return nil
+	}
 }
 
 // ClientWithAdapter sets the adapter type for the HTTP cache
