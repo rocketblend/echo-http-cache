@@ -31,7 +31,7 @@ import (
     "time"
     
     "github.com/rocketblend/echo-http-cache"
-    "github.com/rocketblend/echo-http-cache/adapter/memory"
+    "github.com/rocketblend/echo-http-cache/adapters/memory"
     "github.com/labstack/echo/v4"
 )
 
@@ -70,7 +70,7 @@ Example of Client initialization with Redis adapter:
 ```go
 import (
     "github.com/rocketblend/echo-http-cache"
-    "github.com/rocketblend/echo-http-cache/adapter/redis"
+    "github.com/rocketblend/echo-http-cache/adapters/redis"
 )
 
 ...
@@ -133,8 +133,8 @@ echo-http-cache memory adapter takes way less GC pause time, that means smaller 
 
 ## Godoc Reference
 - [echo-http-cache](https://pkg.go.dev/github.com/rocketblend/echo-http-cache)
-- [Memory adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapter/memory)
-- [Redis adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapter/redis)
+- [Memory adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/memory)
+- [Redis adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/redis)
 
 ## License
 echo-http-cache is released under the [MIT License](https://github.com/rocketblend/echo-http-cache/blob/master/LICENSE).

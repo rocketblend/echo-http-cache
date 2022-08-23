@@ -7,7 +7,7 @@ import (
 
 	"github.com/allegro/bigcache"
 	cache "github.com/rocketblend/echo-http-cache"
-	"github.com/rocketblend/echo-http-cache/adapter/memory"
+	"github.com/rocketblend/echo-http-cache/adapters/memory"
 )
 
 const maxEntrySize = 256

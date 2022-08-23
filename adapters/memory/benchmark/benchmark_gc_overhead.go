@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/allegro/bigcache"
-	"github.com/rocketblend/echo-http-cache/adapter/memory"
+	"github.com/rocketblend/echo-http-cache/adapters/memory"
 )
 
 const (
