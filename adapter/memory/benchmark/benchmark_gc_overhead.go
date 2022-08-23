@@ -65,11 +65,11 @@ func benchmarkBigCache() {
 
 	for i := 0; i < entries; i++ {
 		key, val := generateKeyValue(i, valueSize)
-		bigcache.Set(string(key), val)
+		bigcache.Set(string(rune(key)), val)
 	}
 
 	firstKey, _ := generateKeyValue(1, valueSize)
-	checkFirstElement(bigcache.Get(string(firstKey)))
+	checkFirstElement(bigcache.Get(string(rune(firstKey))))
 
 	fmt.Println("GC pause for bigcache: ", gcPause())
 

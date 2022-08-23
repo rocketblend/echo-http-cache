@@ -22,7 +22,7 @@ func BenchmarkHTTPCacheMamoryAdapterSet(b *testing.B) {
 func BenchmarkBigCacheSet(b *testing.B) {
 	cache := initBigCache(b.N)
 	for i := 0; i < b.N; i++ {
-		cache.Set(string(i), value())
+		cache.Set(string(rune(i)), value())
 	}
 }
 
@@ -43,12 +43,12 @@ func BenchmarkBigCacheGet(b *testing.B) {
 	b.StopTimer()
 	cache := initBigCache(b.N)
 	for i := 0; i < b.N; i++ {
-		cache.Set(string(i), value())
+		cache.Set(string(rune(i)), value())
 	}
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		cache.Get(string(i))
+		cache.Get(string(rune(i)))
 	}
 }
 
@@ -74,7 +74,7 @@ func BenchmarkBigCacheSetParallel(b *testing.B) {
 		id := rand.Intn(1000)
 		counter := 0
 		for pb.Next() {
-			cache.Set(string(parallelKey(id, counter)), value())
+			cache.Set(string(rune(parallelKey(id, counter))), value())
 			counter = counter + 1
 		}
 	})
@@ -101,14 +101,14 @@ func BenchmarkBigCacheGetParallel(b *testing.B) {
 	b.StopTimer()
 	cache := initBigCache(b.N)
 	for i := 0; i < b.N; i++ {
-		cache.Set(string(i), value())
+		cache.Set(string(rune(i)), value())
 	}
 
 	b.StartTimer()
 	b.RunParallel(func(pb *testing.PB) {
 		counter := 0
 		for pb.Next() {
-			cache.Get(string(counter))
+			cache.Get(string(rune(counter)))
 			counter = counter + 1
 		}
 	})
