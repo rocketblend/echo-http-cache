@@ -137,5 +137,11 @@ echo-http-cache memory adapter takes way less GC pause time, that means smaller 
 - [Memory adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/memory)
 - [Redis adapter](https://pkg.go.dev/github.com/rocketblend/echo-http-cache/adapters/redis)
 
+
+## Original
+
+* [echo-http-cache](https://github.com/SporkHubr/echo-http-cache)
+* [http-cache](https://github.com/victorspringer/http-cache)
+
 ## License
 echo-http-cache is released under the [MIT License](https://github.com/rocketblend/echo-http-cache/blob/master/LICENSE).
