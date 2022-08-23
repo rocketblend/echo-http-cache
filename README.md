@@ -84,6 +84,7 @@ import (
         cache.ClientWithAdapter(redis.NewAdapter(ringOpt)),
         cache.ClientWithTTL(10 * time.Minute),
         cache.ClientWithRefreshKey("opn"),
+        cache.ClientWithStatusCodeFilter(func(code int) bool { return code != 400 }), // Default
     )
 
 ...
